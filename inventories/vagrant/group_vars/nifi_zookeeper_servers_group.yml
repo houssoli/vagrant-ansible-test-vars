@@ -1,0 +1,8 @@
+---
+nifi_zookeeper_servers:
+  - zookeeper_host: vm1
+    zookeeper_myid: 1
+    zookeeper_ip: 192.168.76.76
+  - zookeeper_host: vm2
+    zookeeper_myid: 2
+    zookeeper_ip: 192.168.76.77

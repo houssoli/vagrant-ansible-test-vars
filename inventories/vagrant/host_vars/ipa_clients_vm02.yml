@@ -1,0 +1,11 @@
+---
+#ansible_host: 192.168.80.86
+ansible_host: ipaclient2.ipa.bmxinit.ga
+ansible_port: 22
+# ansible_python_interpreter: "/usr/bin/python"
+# ipaclient_hostname: ipaclient2.ipa.bmxinit.ga
+
+#vagrant ssh-config
+# ssh -i /home/lhoussou/.vagrant.d/insecure_private_key vagrant@192.168.80.86
+# ansible_host: 127.0.0.1
+# ansible_port: 2220

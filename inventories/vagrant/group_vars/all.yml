@@ -1,0 +1,15 @@
+---
+# file: group_vars/all
+
+# Current environment
+CURR_ENV: vagrant
+
+# Connection settings
+ansible_port: 2222
+ansible_user: vagrant
+ansible_become: true
+ansible_remote_user: root
+ansible_ssh_user: vagrant
+ansible_python_interpreter: "/usr/bin/python3"
+ansible_private_key_file: /home/lhoussou/.vagrant.d/insecure_private_key
+ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'

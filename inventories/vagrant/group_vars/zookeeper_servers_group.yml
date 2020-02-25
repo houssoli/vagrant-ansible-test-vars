@@ -1,0 +1,5 @@
+---
+zookeeper_servers_backend:
+  - zookeeper_host: vm1
+    zookeeper_myid: 1
+    zookeeper_ip: 192.168.76.76

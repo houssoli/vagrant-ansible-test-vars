@@ -1,0 +1,73 @@
+---
+nifi_version: 1.11.0
+nifi_download_dir: /datadrive
+download_mirror_uri: https://www-eu.apache.org/dist
+
+nifi_config_dirs:
+  install: /datadrive/nifi/releases
+  home: /datadrive/nifi/releases/{{ nifi_version }}
+  external_config: /datadrive/nifi/config_resources
+
+# Specify any property from nifi.properties here.
+nifi_properties:
+  nifi.web.http.host: "{{ ansible_fqdn }}"
+  nifi.web.http.port: 8090
+  # ####################################
+  # Activate for a Secure mode cluster #
+  # ####################################
+  # nifi.web.https.host: "{{ ansible_fqdn }}"
+  # nifi.web.https.port: 9443
+  # nifi.security.keystore: /path/to/keystore.jks
+  # nifi.security.keystoreType: JKS
+  nifi.security.keystorePasswd: "{{ nifi_security_keystore_password | default('SHOULD_BE_REPLACED_nifi_security_keystore_password') }}"
+  nifi.security.keyPasswd: "{{ nifi_security_key_password | default('SHOULD_BE_REPLACED_nifi_security_key_password') }}"
+  # nifi.security.truststore: /path/to/truststore.jks
+  # nifi.security.truststoreType: JKS
+  nifi.security.truststorePasswd: "{{ nifi_security_truststore_password | default('SHOULD_BE_REPLACED_nifi_security_truststore_password') }}"
+  # nifi.cluster.protocol.is.secure: true
+  # ####################################
+  nifi.cluster.is.node: true
+  nifi.cluster.node.address: "{{ ansible_fqdn }}"
+  nifi.cluster.node.protocol.port: 11443
+  nifi.cluster.flow.election.max.candidates: 1
+  nifi.cluster.load.balance.host: "{{ ansible_fqdn }}"
+  nifi.cluster.load.balance.port: 6342
+  nifi.state.management.embedded.zookeeper.start: false
+  nifi.zookeeper.connect.string: 192.168.76.76:2181,192.168.76.77:2181
+  nifi.sensitive.props.key: "{{ nifi_sensitive_props_key | default('SHOULD_BE_REPLACED_nifi_sensitive_props_key') }}"
+
+# Specify any property from bootstrap.conf here.
+bootstrap:
+  java.arg.2: -Xms512m
+  java.arg.3: -Xmx512m
+
+# Specify any property from logback.xml here.
+# Use XPath expressions as keys.
+logback:
+  /configuration/appender[@name="APP_FILE"]/rollingPolicy/maxFileSize: 20MB
+  /configuration/appender[@name="APP_FILE"]/rollingPolicy/maxHistory: 20
+
+# Specify any property from login-identity-providers.xml here.
+# Use XPath expressions as keys.
+login_identity_providers:
+  # Can be one of 'ldap-provider' or 'kerberos-provider'. Leave blank for no RBAC.
+  /loginIdentityProviders/provider/identifier: "ldap-provider"
+  /loginIdentityProviders/provider/property[@name="Authentication Strategy"]: "SIMPLE"
+  /loginIdentityProviders/provider/property[@name="Manager DN"]: "cn=nifi,ou=people,dc=example,dc=com"
+  /loginIdentityProviders/provider/property[@name="Manager Password"]: "{{ nifi_login_identity_provider_property_manager_password | default('SHOULD_BE_REPLACED_nifi_login_identity_provider_property_manager_password') }}"
+  /loginIdentityProviders/provider/property[@name="Url"]: "ldap://hostname:port"
+  /loginIdentityProviders/provider/property[@name="User Search Base"]: "OU=people,DC=example,DC=com"
+  /loginIdentityProviders/provider/property[@name="User Search Filter"]: "sAMAccountName={0}"
+
+# Specify any property from authorizers.xml here.
+# Use XPath expressions as keys.
+authorizers:
+  /authorizers/userGroupProvider/identifier: "file-user-group-provider"
+  /authorizers/userGroupProvider/property[@name="Initial User Identity 1"]: "cn=John Smith,ou=people,dc=example,dc=com"
+  # Use the full DN of the node certificates here
+  /authorizers/userGroupProvider/property[@name="Initial User Identity 2"]: "CN=nifi_server1.example.com, O=ExampleLLC, L=Saint Louis, ST=Missouri, C=US"
+  /authorizers/userGroupProvider/property[@name="Initial User Identity 3"]: "CN=nifi_server2.example.com, O=ExampleLLC, L=Saint Louis, ST=Missouri, C=US"
+  /authorizers/accessPolicyProvider/identifier: "file-access-policy-provider"
+  /authorizers/accessPolicyProvider/property[@name="Initial Admin Identity"]: "cn=John Smith,ou=people,dc=example,dc=com"
+  /authorizers/accessPolicyProvider/property[@name="Node Identity 1"]: "CN=nifi_server1.example.com, O=ExampleLLC, L=Saint Louis, ST=Missouri, C=US"
+  /authorizers/accessPolicyProvider/property[@name="Node Identity 2"]: "CN=nifi_server2.example.com, O=ExampleLLC, L=Saint Louis, ST=Missouri, C=US"

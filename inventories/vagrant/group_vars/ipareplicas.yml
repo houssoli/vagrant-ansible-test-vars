@@ -1,0 +1,7 @@
+---
+ipaclient_force_join: yes
+ipareplica_servers: ipaserver.ipa.bmxinit.ga
+ipaserver_setup_dns: yes
+ipaserver_auto_forwarders: yes
+ipareplica_install_packages: yes
+ipareplica_setup_firewalld: yes

@@ -1,0 +1,7 @@
+---
+commontools_update_all: true
+commontools_packages_install:
+  - curl
+  - less
+  - htop
+  - tree

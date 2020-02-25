@@ -1,0 +1,5 @@
+---
+ipaadmin_password: password1
+ipadm_password: password1
+ipaserver_domain: ipa.bmxinit.ga
+ipaserver_realm: IPA.BMXINIT.GA

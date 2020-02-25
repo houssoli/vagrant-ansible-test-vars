@@ -1,0 +1,4 @@
+---
+#ipaclient_use_otp: yes
+ipaclient_allow_repair: yes
+ipaclient_servers: "ipareplica1.ipa.bmxinit.ga,ipaserver.ipa.bmxinit.ga"

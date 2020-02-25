@@ -1,0 +1,22 @@
+---
+ipaserver_install_packages: yes
+ipaserver_setup_dns: yes
+ipaserver_setup_firewalld: yes
+ipaserver_auto_forwarders: yes
+ipaserver_auto_reverse: yes
+ipaserver_no_host_dns: no
+ipaserver_setup_ca: yes
+ipaserver_setup_kra: yes
+ipaserver_forwarders:
+  - 80.80.80.80
+  - 80.80.81.81
+#   - 8.8.8.8
+#   - 8.8.4.4
+# ipaserver_idstart: 5000
+# ipaserver_idmax: {{ ipaserver_idstart }} + 199999
+# ipaserver_reverse_zones:
+#   -
+#   -
+#ipaserver_zonemgr: houssoli@gmail.com #hostmaster@DOMAIN.
+# -ipaserver_hostname: ipserver.ipa.test.local
+# -ipaserver_ip_addresses: 192.168.80.80

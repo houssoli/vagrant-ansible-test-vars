@@ -1,0 +1,6 @@
+---
+__commontools_packages_install:
+  - curl
+  - less
+  - htop
+  - tree

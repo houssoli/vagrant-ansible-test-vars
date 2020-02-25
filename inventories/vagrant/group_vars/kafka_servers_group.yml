@@ -1,0 +1,71 @@
+---
+kafka_broker_listener_protocol: PLAINTEXT
+kafka_broker_listener_port: 9092
+kafka_broker_bootstrap_servers: '192.168.76.76:9092'
+kafka_zookeeper_connect: '192.168.76.76:2181'
+kafka_zookeeper_connection_timeout_ms: 6000
+
+
+kafka_root_dir: /datadrive
+
+kafka_topics_backend_billy:
+- topic: 'billy.billscraper'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'billy.injector'
+  state: present
+  partitions: 1
+  replication_factor: 1
+
+kafka_topics_backend_invoice:
+- topic: 'invoice.saved.algo.valo.result.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'invoice.saved.algo.valo.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'invoice.saved.end.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'invoice.saved.raw.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'invoice.saved.rules.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'invoice.saved.servicefait.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'invoice.saved.validated.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+
+kafka_topics_backend_sensor_data:
+- topic: 'histo.sensor.saved.raw.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'histo.sensor.saved.raw.verified.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'sensor.replay.raw.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'sensor.saved.raw.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1
+- topic: 'sensor.saved.raw.verified.topic'
+  state: present
+  partitions: 1
+  replication_factor: 1

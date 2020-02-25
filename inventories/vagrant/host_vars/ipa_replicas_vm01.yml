@@ -1,0 +1,11 @@
+---
+#ansible_host: 192.168.80.81
+ansible_host: ipareplica1.ipa.bmxinit.ga
+ansible_port: 22
+# ansible_python_interpreter: "/usr/bin/python"
+# ipareplica_hostname: ipareplica1.ipa.bmxinit.ga
+
+#vagrant ssh-config
+# ssh -i /home/lhoussou/.vagrant.d/insecure_private_key vagrant@192.168.80.81
+# ansible_host: 127.0.0.1
+# ansible_port: 2200

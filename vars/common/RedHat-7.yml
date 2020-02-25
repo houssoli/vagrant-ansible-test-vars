@@ -1,0 +1,8 @@
+---
+__commontools_packages_install:
+  - epel-release.noarch
+  - curl.x86_64
+  - less.x86_64
+  - tree.x86_64
+  - htop.x86_64
+  - unzip.x86_64
