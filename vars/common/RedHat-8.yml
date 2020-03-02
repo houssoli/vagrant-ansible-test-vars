@@ -6,3 +6,4 @@ __commontools_packages_install:
   - tree.x86_64
   - htop.x86_64
   - unzip.x86_64
+  - haveged.x86_64
