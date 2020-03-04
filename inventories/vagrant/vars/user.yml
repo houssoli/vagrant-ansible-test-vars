@@ -24,6 +24,7 @@ users:
     servers:
       - nifi_servers_group
       - nifi_zookeeper_servers_group
+      - nifireg_servers_group
       - nginx_front_servers_group
       - web_front_servers_group
       - bs_front_servers_group

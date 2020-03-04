@@ -1,0 +1,4 @@
+---
+ansible_host: 192.168.76.78
+ansible_port: 22
+# ssh -i /home/lhoussou/.vagrant.d/insecure_private_key vagrant@192.168.76.78 -p 22
